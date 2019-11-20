@@ -11,8 +11,8 @@ defmodule HackerNewsAggregatorWeb.StoryController do
   end
 
   def show(conn, %{"id" => id}) do
-    {:ok, story} = Stories.get(id)
-
-    render(conn, "show.json", story: story)
+    with {:ok, story} <- Stories.get(id) do
+      render(conn, "show.json", story: story)
+    end
   end
 end

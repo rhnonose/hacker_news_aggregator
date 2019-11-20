@@ -49,5 +49,11 @@ defmodule HackerNewsAggregatorWeb.StoryControllerTest do
                "url" => "https://example.com/mah_url"
              } == json_response(conn, 200)["data"]
     end
+
+    test "render 404 when not found", %{conn: conn} do
+      conn = get(conn, Routes.story_path(conn, :show, 4))
+
+      assert json_response(conn, 404)
+    end
   end
 end
