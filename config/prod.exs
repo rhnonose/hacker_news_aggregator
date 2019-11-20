@@ -6,4 +6,7 @@ config :hacker_news_aggregator, HackerNewsAggregatorWeb.Endpoint,
 
 config :logger, level: :info
 
+config :hacker_news_aggregator,
+  host: "hacker-news.firebaseio.com"
+
 import_config "prod.secret.exs"

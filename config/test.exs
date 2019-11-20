@@ -5,3 +5,6 @@ config :hacker_news_aggregator, HackerNewsAggregatorWeb.Endpoint,
   server: false
 
 config :logger, level: :warn
+
+config :hacker_news_aggregator,
+  host: "example.com"
