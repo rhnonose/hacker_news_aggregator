@@ -13,6 +13,8 @@ defmodule HackerNewsAggregator.FetcherTest do
       assert_received(%{topic: "top_stories_fetched"})
 
       assert_receive(:fetch, 200)
+
+      assert_receive(:fetch, 200)
     end
   end
 
@@ -21,8 +23,6 @@ defmodule HackerNewsAggregator.FetcherTest do
       PubSub.subscribe("top_stories_fetched")
       Fetcher.handle_info(:fetch, [])
       assert_received(%{topic: "top_stories_fetched"})
-
-      assert_receive(:fetch, 200)
     end
   end
 end

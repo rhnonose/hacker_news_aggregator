@@ -22,7 +22,7 @@ defmodule HackerNewsAggregator.Fetcher do
     |> Builder.top()
     |> PubSub.publish("top_stories_fetched")
 
-    Process.send_after(self(), :fetch, @fetch_period)
+    :timer.send_interval(@fetch_period, self(), :fetch)
 
     {:noreply, state}
   end
@@ -31,8 +31,6 @@ defmodule HackerNewsAggregator.Fetcher do
     50
     |> Builder.top()
     |> PubSub.publish("top_stories_fetched")
-
-    Process.send_after(self(), :fetch, @fetch_period)
 
     {:noreply, state}
   end
