@@ -1,9 +1,9 @@
 defmodule HackerNewsAggregator.HttpMock do
-  def get(%URI{path: "/v0/topstories"}),
+  def get(%URI{path: "/v0/topstories.json"}),
     do: {:ok, %{status_code: 200, body: "[1,2,3]"}}
 
   def get(%URI{path: "/v0/item/" <> id}) do
-    {id_int, ""} = Integer.parse(id)
+    {id_int, ".json"} = Integer.parse(id)
 
     {:ok,
      %{

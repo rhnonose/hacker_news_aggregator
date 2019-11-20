@@ -2,7 +2,7 @@ defmodule HackerNewsAggregator.Fetcher.Builder do
   alias HackerNewsAggregator.Fetcher.Client
 
   def top(number) do
-    "/v0/topstories"
+    "/v0/topstories.json"
     |> Client.get()
     # TODO(?): filter types
     |> take(number)
@@ -19,5 +19,5 @@ defmodule HackerNewsAggregator.Fetcher.Builder do
   end
 
   # TODO: use Task.async (mocks make it dificult to test)
-  defp fetch_item(item_id), do: Client.get("/v0/item/#{item_id}")
+  defp fetch_item(item_id), do: Client.get("/v0/item/#{item_id}.json")
 end
