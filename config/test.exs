@@ -8,4 +8,5 @@ config :logger, level: :warn
 
 config :hacker_news_aggregator,
   host: "example.com",
-  http_client: HackerNewsAggregator.HttpMock
+  http_client: HackerNewsAggregator.HttpMock,
+  fetch_period: 100
