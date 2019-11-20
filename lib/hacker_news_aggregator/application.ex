@@ -23,6 +23,7 @@ defmodule HackerNewsAggregator.Application do
 
   defp runtime_children(_),
     do: [
+      worker(HackerNewsAggregator.Storer, []),
       worker(HackerNewsAggregator.Fetcher, [])
     ]
 end
