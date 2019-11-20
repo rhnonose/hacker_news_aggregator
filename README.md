@@ -1,18 +1,26 @@
 # HackerNewsAggregator
 
-To start your Phoenix server:
+## Installation
 
-  * Install dependencies with `mix deps.get`
-  * Start Phoenix endpoint with `mix phx.server`
+  * `mix deps.get`
+  * `mix compile`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Test
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+  * `mix test`
 
-## Learn more
+## Run
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+  * `mix phx.server` or `iex -S mix phx.server`
+
+## Using
+
+To get all top stories, go to `http://localhost:4000/api/stories`
+And get a single story: `http://localhost:4000/api/stories/ID`
+
+To use the websocket api:
+
+```bash
+  wsta 'ws://localhost:4000/socket/websocket' \
+  '{"topic":"top_stories_fetched","event":"phx_join","payload":{},"ref":"1"}'
+```
