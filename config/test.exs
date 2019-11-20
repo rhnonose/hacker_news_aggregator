@@ -7,4 +7,5 @@ config :hacker_news_aggregator, HackerNewsAggregatorWeb.Endpoint,
 config :logger, level: :warn
 
 config :hacker_news_aggregator,
-  host: "example.com"
+  host: "example.com",
+  http_client: HackerNewsAggregator.HttpMock

@@ -2,14 +2,13 @@ defmodule HackerNewsAggregator.Fetcher.Client do
   @moduledoc """
   HackerNews API client: https://github.com/HackerNews/API
   """
-  require Mockery.Macro
-
+  @http_clint Application.get_env(:hacker_news_aggregator, :http_client, HTTPoison)
   @host Application.get_env(:hacker_news_aggregator, :host)
 
   def get(path) do
     path
     |> build_uri()
-    |> http_client().get()
+    |> @http_clint.get()
   end
 
   defp build_uri(path) do
@@ -19,6 +18,4 @@ defmodule HackerNewsAggregator.Fetcher.Client do
       scheme: "https"
     }
   end
-
-  defp http_client, do: Mockery.Macro.mockable(HTTPoison)
 end
