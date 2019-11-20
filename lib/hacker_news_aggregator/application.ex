@@ -5,7 +5,8 @@ defmodule HackerNewsAggregator.Application do
 
   def start(_type, _args) do
     children = [
-      HackerNewsAggregatorWeb.Endpoint
+      HackerNewsAggregatorWeb.Endpoint,
+      supervisor(Phoenix.PubSub.PG2, [HackerNewsAggregator.PubSub, []])
     ]
 
     opts = [strategy: :one_for_one, name: HackerNewsAggregator.Supervisor]
