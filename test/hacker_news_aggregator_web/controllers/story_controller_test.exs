@@ -11,6 +11,7 @@ defmodule HackerNewsAggregatorWeb.StoryControllerTest do
       :top_stories,
       {3,
        %{
+         "id" => 3,
          "title" => "some title",
          "by" => "jose",
          "descendants" => 45,

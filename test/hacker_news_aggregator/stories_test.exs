@@ -15,11 +15,11 @@ defmodule HackerNewsAggregator.StoriesTest do
 
   describe "stories" do
     test "index/0 returns all stories" do
-      assert [_, _, _] = Stories.index()
+      assert [%{}, %{}, %{}] = Stories.index()
     end
 
     test "get/1 returns the story with given id" do
-      assert {:ok, {1, _}} = Stories.get(1)
+      assert {:ok, %{}} = Stories.get(1)
     end
   end
 end

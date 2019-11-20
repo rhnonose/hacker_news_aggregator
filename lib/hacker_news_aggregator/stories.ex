@@ -16,10 +16,14 @@ defmodule HackerNewsAggregator.Stories do
   defp do_get(id) do
     case :ets.lookup(@table_name, id) do
       [] -> {:error, :not_found}
-      [story] -> {:ok, story}
+      [{_id, story}] -> {:ok, story}
     end
   end
 
   @spec index :: list(term)
-  def index, do: :ets.tab2list(:top_stories)
+  def index do
+    @table_name
+    |> :ets.tab2list()
+    |> Enum.map(fn {_id, body} -> body end)
+  end
 end

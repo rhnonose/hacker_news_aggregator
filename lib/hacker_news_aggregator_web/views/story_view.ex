@@ -10,9 +10,9 @@ defmodule HackerNewsAggregatorWeb.StoryView do
     %{data: render_one(story, StoryView, "story.json")}
   end
 
-  def render("story.json", %{story: {id, story}}) do
+  def render("story.json", %{story: story}) do
     %{
-      id: id,
+      id: story["id"],
       title: story["title"],
       by: story["by"],
       descendants: story["descendants"],
