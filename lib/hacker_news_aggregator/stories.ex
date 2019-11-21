@@ -21,9 +21,18 @@ defmodule HackerNewsAggregator.Stories do
   end
 
   @spec index :: list(term)
-  def index do
+  def index(params \\ %{}) do
     @table_name
     |> :ets.tab2list()
     |> Enum.map(fn {_id, body} -> body end)
+    |> paginate(params)
+  end
+
+  defp paginate(list, params) do
+    page_size = params |> Map.get("page_size", "10") |> String.to_integer()
+    page_number = params |> Map.get("page_number", "0") |> String.to_integer()
+
+    {_, paginated} = Enum.split(list, page_number)
+    Enum.take(paginated, page_size)
   end
 end

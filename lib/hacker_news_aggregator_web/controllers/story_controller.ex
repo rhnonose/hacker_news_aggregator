@@ -5,8 +5,8 @@ defmodule HackerNewsAggregatorWeb.StoryController do
 
   action_fallback HackerNewsAggregatorWeb.FallbackController
 
-  def index(conn, _params) do
-    stories = Stories.index()
+  def index(conn, params) do
+    stories = Stories.index(params)
     render(conn, "index.json", stories: stories)
   end
 
